@@ -176,24 +176,7 @@ class Parser
 
     return data
   }
-
-  getEvents()
-  {
-    const URL = `http://www.bstu.ru`
-    const events = []
-    const $events = this.$('h2.summary a')
-    $events.slice(0, 5).each((i,a) => {
-      const $a = this.$(a)
-
-      events.push({
-        title : $a.text().trim(),
-        href : `${URL}${$a.attr('href')}`
-      })
-    })
-
-    return events
-  }
-
+  
   getFromWhoms(schedule)
   {
     const fromWhoms = []
