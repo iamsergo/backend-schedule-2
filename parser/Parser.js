@@ -191,6 +191,20 @@ class Parser
 
     return fromWhoms
   }
+
+  getStream()
+  {
+    return {
+      title : this.$('h1').text()
+                .replace('Трансляция из аудитории','')
+                .replace('БГТУ им. В.Г.Шухова','')
+                .replace('БГТУ им. В.Г. Шухова','')
+                .trim().split(' ').join(''),
+      href : this.$('iframe').attr('src')
+              .replace('?wmode=transparent&autoplay=0','')
+              .replace('https://www.youtube.com/embed/','https://www.youtube.com/watch?v='),
+    }
+  }
 }
 
 module.exports = Parser
