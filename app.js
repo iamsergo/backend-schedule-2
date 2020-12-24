@@ -11,7 +11,7 @@ const list = require('./routes/list')
 
 app.use(require('cors')())
 
-app.use(favicon(__dirname + 'favicon.ico'))
+app.use(favicon(__dirname + '/favicon.ico'))
 
 app.use(bp.json())
 
