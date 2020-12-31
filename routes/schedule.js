@@ -7,7 +7,7 @@ const Parser = require('../parser/Parser')
 router.get('/schedule/:gtid/:id', async (req, res) => {
   const { gtid, id } = req.params
   
-  const BASE_URL = 'http://www.bstu.ru/static/themes/bstu/schedule/index.php?'
+  const BASE_URL = 'https://www.bstu.ru/static/themes/bstu/schedule/index.php?'
   const URL = `${BASE_URL}${gtid}=${id}`
 
   const body = await BodyParser.getHTML(URL)

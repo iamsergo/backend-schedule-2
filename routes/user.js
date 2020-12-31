@@ -17,7 +17,7 @@ router.get('/user/:id', async (req, res) => {
     let payload = { myGroup : null, fromWhoms : []}
     if(user.group)
     {
-      const BASE_URL = 'http://www.bstu.ru/static/themes/bstu/schedule/index.php?'
+      const BASE_URL = 'https://www.bstu.ru/static/themes/bstu/schedule/index.php?'
       const group = user.group.replace(/(\?|&)/g,'')
       const URL = `${BASE_URL}${group}`
 

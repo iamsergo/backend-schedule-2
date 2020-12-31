@@ -90,11 +90,13 @@ class Parser
     return exams
   }
 
-  getExams(isGroup)
+  getExams(isGroup, twoSchedules)
   {
     const selector = isGroup
       ? 'body > table.schedule:last-of-type'
-      : 'body > table[class^=schedule]:nth-of-type(2)'
+      : twoSchedules
+        ? 'body > table[class^=schedule]:nth-of-type(3)'
+        : 'body > table[class^=schedule]:nth-of-type(2)'
     const $table = this.$(selector)
 
     if(!$table.length || !$table.find('.top_banner_post').length) return
@@ -106,13 +108,16 @@ class Parser
 
   getSchedule(href)
   {
-    const table = this.$('body > table.schedule:first-of-type > tbody')
+    const twoSchedules = this.$('body > table.schedule').length > 1
+    const selector = twoSchedules ? 'nth-of-type(2)' : 'first-of-type'
+    
+    const table = this.$(`body > table.schedule:${selector} > tbody`)
 
     const data = {
-      title : this.$('.top_banner').text().trim(),
+      title : this.$('.top_banner').eq(0).text().trim(),
       href,
       schedule : [],
-      exams : this.getExams(href.includes('g')),
+      exams : this.getExams(href.includes('g'), twoSchedules),
     }
 
     const $trs = table.children('tr')

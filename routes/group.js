@@ -12,7 +12,7 @@ router.put('/user/group', async (req, res) => {
   
   await User.updateOne({ id : uid }, { $set : { group : `?${g}` } })
 
-  const BASE_URL = 'http://www.bstu.ru/static/themes/bstu/schedule/index.php?'
+  const BASE_URL = 'https://www.bstu.ru/static/themes/bstu/schedule/index.php?'
   
   const URL = `${BASE_URL}${g}`
   const body = await BodyParser.getHTML(URL)
