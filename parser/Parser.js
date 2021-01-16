@@ -108,8 +108,11 @@ class Parser
 
   getSchedule(href)
   {
-    const twoSchedules = this.$('body > table.schedule').length > 1
-    const selector = twoSchedules ? 'nth-of-type(2)' : 'first-of-type'
+    // const twoSchedules = this.$('body > table.schedule').length > 1
+    // const selector = twoSchedules ? 'nth-of-type(2)' : 'first-of-type'
+
+    const twoSchedules = false
+    const selector = 'first-of-type'
     
     const table = this.$(`body > table.schedule:${selector} > tbody`)
 
